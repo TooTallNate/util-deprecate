@@ -36,7 +36,7 @@ function deprecate (fn, msg) {
       } else if (config('traceDeprecation')) {
         console.trace(msg);
       } else {
-        console.error(msg);
+        console.warn(msg);
       }
       warned = true;
     }
