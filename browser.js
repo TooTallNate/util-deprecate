@@ -56,7 +56,10 @@ function deprecate (fn, msg) {
 
 function config (name) {
   if (!global.localStorage) return false;
-  var val = global.localStorage[name];
+  var val = null;
+  try {
+    val = global.localStorage[name];
+  } catch (e) {}
   if (null == val) return false;
   return String(val).toLowerCase() === 'true';
 }
