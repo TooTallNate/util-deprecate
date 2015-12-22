@@ -56,8 +56,9 @@ function deprecate (fn, msg) {
 
 function config (name) {
   // accessing global.localStorage can trigger a DOMException in sandboxed iframes
+  // or generate a failure message in Google Chrome apps
   try {
-    if (!global.localStorage) return false;
+    if ((global.chrome && global.chrome.app) || !global.localStorage) return false;
   } catch (_) {
     return false;
   }
